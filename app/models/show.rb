@@ -5,8 +5,7 @@ class Show < ActiveRecord::Base
   end
 
   def self.most_popular_show
-    max=Show.maximum('rating')
-    Show.where("rating=?",max).first
+    Show.where("rating=?",Show.highest_rating).first
   end
 
   def self.lowest_rating
@@ -14,10 +13,9 @@ class Show < ActiveRecord::Base
   end
 
   def least_popular_show
-    min=Show.maximum('rating')
-    Show.where("rating=?",min).first
+    Show.where("rating=?",Show.lowest_rating).first
   end
-  
+
 
 
 end
